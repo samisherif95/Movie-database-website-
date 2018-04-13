@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Project</title>
+	
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<!-- CUSTOM STYLES -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC" rel="stylesheet">
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- CUSTOM JS -->
+	<script type="text/javascript" src="scripts/scripts.js"></script>
+
+
+</head>
+    <style>
+        ul.dropdown-lr {
+  width: 300px;
+}
+
+@media (max-width: 768px) {
+	.dropdown-lr h3 {
+		color: #eee;
+	}
+	.dropdown-lr label {
+		color: #eee;
+	}
+}
+    </style>
+<body>
+	<!--  -->
+	<!-- Navbar -->
+	<!--  -->
+	<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+        <a class="navbar-brand" href="http://localhost/project/open_page.php">DOOS</a>
+        <form class="navbar-form navbar-right searchForm">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search movies">
+	        </div>
+	        <button type="submit" class="btn btn-default">Go</button>
+	    </form>
+     </div>
+        <?php  $started = session_start(); ?>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genres<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="" class="action" id="action">Action</a></li>
+            <li><a href="" class="adventure" id="adventure">Adventure</a></li>
+            <li><a href="" class="animation" id="animation">Animation</a></li>
+            <li><a href="#" class="comedy" id="comedy">Comedy</a></li>
+            <li><a href="#" class="crime" id="crime">Crime</a></li>
+            <li><a href="#" class="drama" id="drama">Drama</a></li>
+            <li><a href="#" class="family" id="family">Family</a></li>
+            <li><a href="#" class="fantasy" id="fantasy">Fantasy</a></li>
+            <li><a href="#" class="history" id="history">History</a></li>
+            <li><a href="#" class="music" id="music">Music</a></li>
+            <li><a href="#" class="romance" id="romance">Romance</a></li>
+            <li><a href="#" class="scifi" id="scifi">Science Fiction</a></li>
+            <li><a href="#" class="thriller" id="thriller">Thriller</a></li>
+          </ul>
+        <li><a href="#" class="nowPlaying">Now Playing</a></li>
+        <li><a href="#" class="upComing">Up Coming</a></li>
+      </ul>
+      
+        
+        
+        <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="http://localhost/project/movie_page.php">Home</a></li>
+          
+          <li><a><?php echo $_SESSION['user_name']; ?></a></li>
+    
+                        <?php if(isset($_SESSION['user_name'])){ ?>
+                        <li><a href="scripts/logout.php">Logout</a></li> 
+                        <?php } else { ?>
+                            <li><a href="http://localhost/project/registeration_page.php">Register</a></li>
+                            <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
+                        <?php } ?>
+                            
+                        <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+                            <div class="col-lg-12">
+                                
+                                <div class="text-center"><h3><b>Log In</b></h3></div>
+                                
+                                <?php echo $_SESSION['x']; ?>
+                                
+                                <form id="login-form" action="scripts/check_login.php" method="post" role="form" autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="on">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="passwordlog" id="passwordlog" tabindex="2" class="form-control" placeholder="Password" autocomplete="on">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-7">
+                                                <input type="checkbox" tabindex="3" name="remember" id="remember">
+                                                <label for="remember"> Remember Me</label>
+                                            </div>
+                                            <div class="col-xs-5 pull-right">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
+                                </form>
+                            </div>
+                        </ul>
+                        </li>
+        </ul>
+  </div>
+</div>
+</nav>
+
+
+	<!-- Displaying the movies -->
+
+	<div class="container">
+		<div class="row">
+      <div class="genreLabel"><h1 id="movieGenreLabel"></h1></div>
+        <!-- I need the h1 to change accordingly depending on what was clicked. -->
+			<div id="movie-grid">
+				 <!-- Jquery get us the movie posters! Need a place to put the poster images -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+
+<style>
+body {
+   
+    background-size: cover;
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/moviereg.jpg);
+    background-position: center;
+}
+ul.dropdown-lr {
+  width: 300px;
+}
+
+@media (max-width: 768px) {
+	.dropdown-lr h3 {
+		color: #eee;
+	}
+	.dropdown-lr label {
+		color: #eee;
+	}
+}
+</style>
+    
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost/project/open_page.php">DOOS</a>
+            </div>
+            
+            <?php  $started = session_start(); ?>
+            
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                   
+                    <li><a href="http://localhost/project/movie_page.php">Home</a></li>
+                    <li><a href="http://localhost/project/registeration_page.php">Register</a></li>
+                </ul>
+            </div>
+        </div>
+</nav>
+<br><br><br>
+    
+<form class="form-horizontal" id="reg" role="form" method="get" action ="scripts/add_user_to_db.php" onsubmit="return ifmatch(this)">
+    
+<script type = "text/javascript">
+function ifmatch()
+{
+    var email = document.getElementById("Email");
+    var regex = /^([A-Za-z]+[\.-_0-9A-Za-z]*)@[a-zA-Z]+\.[a-zA-Z]{2,4}$/;
+    var pass1 = document.getElementById("password");
+    var pass2 = document.getElementById("ConfirmPassword");
+    
+    if(!email.value.match(regex))
+    {
+        alert("Please enter a valid email");
+        email.focus();
+        email.select();
+        return false;``
+    }
+    
+    if(pass1.value != pass2.value)
+    {
+        alert("Passwords do not match");
+        pass2.focus();
+        pass2.select();
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+        
+</script>
+
+    
+<div class="container text-center text-center">
+            
+              <center><h2 style="color:white">Registration Form</h2></center><br>
+
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label" style="color:white">First Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="firstname" id="firstName" placeholder="First Name" class="form-control" autofocus required>
+                    </div>
+                </div>
+    
+				<div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label" style="color:white">Last Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="lastname" id="lastName" placeholder="Last Name" class="form-control" autofocus required>
+                    </div>
+                </div>
+    
+				<div class="form-group">
+                    <label for="username" class="col-sm-3 control-label" style="color:white">Username</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="username" id="UserName" placeholder="Username" class="form-control" autofocus required> 
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label" style="color:white">Email</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="email" id="Email" placeholder="Email" class="form-control" autofocus required>
+                        <span class="help-block">xxxxxxxxx@xxxxx.xxx</span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label" style="color:white">Password</label>
+                    <div class="col-sm-4">
+                        <input type="password" name="password" id="password" placeholder="Password" class="form-control" required="required">
+                    </div>
+                </div>
+    
+				<div class="form-group">
+                    <label for="Confirm Password" class="col-sm-3 control-label" style="color:white">Confirm Password</label>
+                    <div class="col-sm-4">
+                        <input type="password" id="ConfirmPassword" placeholder="Confirm Password" class="form-control" required="required">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Date" class="col-sm-3 control-label" style="color:white">BirthDate</label>
+                    <div class="col-sm-4">
+                        <input type="date" name="birthdate" size="20" required>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="gender" style="color:white">Gender</label>
+                    
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6"> 
+                                <label class="radio-inline" for="gender-0" style="color:white">
+                                    <input type="radio" name="gender" id="gender" value="Male" checked="checked"> Male</label> 
+                                <label class="radio-inline" for="gender-1" style="color:white">
+                                    <input type="radio" name="gender" id="gender" value="Female">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <div class="col-md-2 col-sm-offset-3">
+                        <button type="submit" class="btn btn-success"> Submit</button>
+                    </div>
+                </div>
+</div> 
+</form>
+</body>
+</html>

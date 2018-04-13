@@ -1,0 +1,137 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Project</title>
+</head>
+
+<style>
+ body {
+    min-width: 100%;
+    min-height: 100%
+    background-color: black;
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(images/movie.jpg);
+    height:100%;
+    background-size: cover;
+    background-position: center;
+    padding-top: 90px;
+}
+
+ul.dropdown-lr {
+  width: 300px;
+}
+ 
+@media (max-width: 768px) {
+    .dropdown-lr h3 {
+        color: #eee;
+    }
+    .dropdown-lr label {
+        color: #eee;
+    }
+}
+ 
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+   
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+   
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}  
+</style>
+    
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="http://localhost/project/open_page.php">DOOS</a>
+            </div>
+            
+            <?php  $started = session_start(); ?>
+            
+            <div id="navbar" class="collapse navbar-collapse">
+ 
+                <ul class="nav navbar-nav navbar-right">
+                   
+                    <li><a href="http://localhost/project/movie_page.php">Home</a></li>
+                    
+                    <li><a><?php echo $_SESSION['user_name']; ?></a></li>
+                    
+                    <?php if(isset($_SESSION['user_name'])){ ?>
+                    <li><a href="scripts/logout.php">Logout</a></li> <?php }
+                        
+                    else{ ?>
+                    <li><a href="http://localhost/project/registeration_page.php">Register</a></li>
+                    <li class="dropdown">    
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Log In<span class="caret"></span></a>
+                        <?php } ?>
+                    
+                        <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+                            <div class="col-lg-12">
+                                <div class="text-center"><h3><b>Log In</b></h3></div>
+                                
+                                <?php echo $_SESSION['x']; ?>
+                                
+                                <form id="login-form" action="scripts/check_login.php" method="post" role="form" autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
+                                    </div>
+ 
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="passwordlog" id="passwordlog" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
+                                    </div>
+ 
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-7">
+                                                <input type="checkbox" tabindex="3" name="remember" id="remember">
+                                                <label for="remember"> Remember Me</label>
+                                            </div>
+                                            <div class="col-xs-5 pull-right">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In">
+                                            </div>
+                                        </div>
+                                    </div>
+ 
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="text-center">
+                                                    <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
+                                </form>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br>
+    <h1 style = "text-align: center; font-size: 50px; color: white;"> Welcome To Your Movie Guide</h1>
+    <br><br>
+    <h2 style = "text-align: center; font-size: 30px; color: white;"> Done by: Donia Khairallah, Omar Hany , Omar Helal and Sami Sherif</h2>
+    <br><br>
+</body>
+</html>
